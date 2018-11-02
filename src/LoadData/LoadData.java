@@ -45,6 +45,7 @@ public class LoadData implements jTPCCConfig {
   private static Random             gen;
   private static String             dbType;
   private static int                numWarehouses = 0;
+  private static int                commitCount = 0;
   private static String             fileLocation  = "";
   private static boolean            outputFiles   = false;
   private static PrintWriter        out           = null;
@@ -57,7 +58,7 @@ public class LoadData implements jTPCCConfig {
 
       System.out.println("----------------- Initialization -------------------");
 
-      numWarehouses = configWhseCount;
+      intPara();
       for (int i = 0; i < args.length; i++)
       {
 	      System.out.println(args[i]);
@@ -130,8 +131,20 @@ public class LoadData implements jTPCCConfig {
 
   } // end main
 
+    private static void intPara() {
 
-  static void transRollback () {
+        try {
+            Properties ini = new Properties();
+            ini.load( new FileInputStream(System.getProperty("prop")));
+            numWarehouses = Integer.parseInt(ini.getProperty("warehouses",Integer.toString(configWhseCount)));
+            commitCount = Integer.parseInt(ini.getProperty("commitCount",Integer.toString(configCommitCount)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    static void transRollback () {
       if (outputFiles == false)
       {
         try {
@@ -312,7 +325,7 @@ static void initJDBC() {
             itemPrepStmt.setLong(5, item.i_im_id);
             itemPrepStmt.addBatch();
 
-            if (( k % configCommitCount) == 0) {
+            if (( k % commitCount) == 0) {
               long tmpTime = new java.util.Date().getTime();
               String etStr = "  Elasped Time(ms): " + ((tmpTime - lastTimeMS)/1000.000) + "                    ";
               System.out.println(etStr.substring(0, 30) + "  Writing record " + k + " of " + t);
@@ -330,7 +343,7 @@ static void initJDBC() {
             str = str + item.i_im_id;
     		out.println(str);
 
-            if (( k % configCommitCount) == 0) {
+            if (( k % commitCount) == 0) {
               long tmpTime = new java.util.Date().getTime();
               String etStr = "  Elasped Time(ms): " + ((tmpTime - lastTimeMS)/1000.000) + "                    ";
               System.out.println(etStr.substring(0, 30) + "  Writing record " + k + " of " + t);
@@ -526,7 +539,7 @@ static void initJDBC() {
               stckPrepStmt.setString(16, stock.s_dist_09);
               stckPrepStmt.setString(17, stock.s_dist_10);
               stckPrepStmt.addBatch();
-            if (( k % configCommitCount) == 0) {
+            if (( k % commitCount) == 0) {
               long tmpTime = new java.util.Date().getTime();
               String etStr = "  Elasped Time(ms): " + ((tmpTime - lastTimeMS)/1000.000) + "                    ";
               System.out.println(etStr.substring(0, 30) + "  Writing record " + k + " of " + t);
@@ -556,7 +569,7 @@ static void initJDBC() {
               str = str + stock.s_dist_10;
               out.println(str);
 
-            if (( k % configCommitCount) == 0) {
+            if (( k % commitCount) == 0) {
               long tmpTime = new java.util.Date().getTime();
               String etStr = "  Elasped Time(ms): " + ((tmpTime - lastTimeMS)/1000.000) + "                    ";
               System.out.println(etStr.substring(0, 30) + "  Writing record " + k + " of " + t);
@@ -819,7 +832,7 @@ static void initJDBC() {
                 histPrepStmt.addBatch();
 
 
-              if (( k % configCommitCount) == 0) {
+              if (( k % commitCount) == 0) {
                 long tmpTime = new java.util.Date().getTime();
                 String etStr = "  Elasped Time(ms): " + ((tmpTime - lastTimeMS)/1000.000) + "                    ";
                 System.out.println(etStr.substring(0, 30) + "  Writing record " + k + " of " + t);
@@ -870,7 +883,7 @@ static void initJDBC() {
               str = str + history.h_data;
               outHist.println(str);
 
-              if (( k % configCommitCount) == 0) {
+              if (( k % commitCount) == 0) {
                 long tmpTime = new java.util.Date().getTime();
                 String etStr = "  Elasped Time(ms): " + ((tmpTime - lastTimeMS)/1000.000) + "                    ";
                 System.out.println(etStr.substring(0, 30) + "  Writing record " + k + " of " + t);
@@ -1057,7 +1070,7 @@ static void initJDBC() {
                   outLine.println(str);
                 }
 
-                if (( k % configCommitCount) == 0) {
+                if (( k % commitCount) == 0) {
                   long tmpTime = new java.util.Date().getTime();
                   String etStr = "  Elasped Time(ms): " + ((tmpTime - lastTimeMS)/1000.000) + "                    ";
                   System.out.println(etStr.substring(0, 30) + "  Writing record " + k + " of " + t);
