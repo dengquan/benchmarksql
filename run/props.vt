@@ -1,6 +1,7 @@
 driver=io.vitess.jdbc.VitessDriver
 conn=jdbc:vitess://10.19.140.200:32047
 database=vt_test_keyspace
+keyspace=test_keyspace
 
 commitCount=10
 
