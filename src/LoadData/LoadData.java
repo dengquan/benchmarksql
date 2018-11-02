@@ -841,7 +841,7 @@ static void initJDBC() {
                 custPrepStmt.executeBatch();
                 histPrepStmt.executeBatch();
                 custPrepStmt.clearBatch();
-                custPrepStmt.clearBatch();
+                histPrepStmt.clearBatch();
                 transCommit();
               }
            } else {
