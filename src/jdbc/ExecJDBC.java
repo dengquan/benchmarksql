@@ -64,7 +64,8 @@ public class ExecJDBC {
 		   if (line.endsWith(";")) {
 		      String query = sql.toString();
               query.replaceAll("%DATABASE%", database);
-		      execJDBC(stmt, query.substring(0, query.length() - 1));
+              System.out.println(query);
+              execJDBC(stmt, query.substring(0, query.length() - 1));
 		      sql = new StringBuffer();
 		   } else {
 		     sql.append("\n");
