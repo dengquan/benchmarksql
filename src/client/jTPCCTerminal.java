@@ -601,7 +601,7 @@ public class jTPCCTerminal implements jTPCCConfig, Runnable
         int namecnt, o_id = -1, o_carrier_id = -1;
         float c_balance;
         String c_first, c_middle;
-        java.sql.Date entdate = null;
+        java.sql.Timestamp entdate = null;
         Vector <String> orderLines = new Vector <String> ();
 
 
@@ -729,7 +729,7 @@ public class jTPCCTerminal implements jTPCCConfig, Runnable
               if(rs.next())
               {
                   o_carrier_id = rs.getInt("o_carrier_id");
-                  entdate = rs.getDate("o_entry_d");
+                  entdate = rs.getTimestamp("o_entry_d");
               }
             }
             rs.close();
@@ -763,8 +763,8 @@ public class jTPCCTerminal implements jTPCCConfig, Runnable
                 orderLine.append(" - ");
                 orderLine.append(jTPCCUtil.formattedDouble(rs.getDouble("ol_amount")));
                 orderLine.append(" - ");
-                if(rs.getDate("ol_delivery_d") != null)
-                    orderLine.append(rs.getDate("ol_delivery_d"));
+                if(rs.getTimestamp("ol_delivery_d") != null)
+                    orderLine.append(rs.getTimestamp("ol_delivery_d"));
                 else
                     orderLine.append("99-99-9999");
                 orderLine.append("]");
