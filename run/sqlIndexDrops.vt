@@ -3,6 +3,8 @@ alter table %DATABASE%.warehouse drop constraint pk_warehouse;
 
 alter table %DATABASE%.district drop constraint pk_district;
 
+alter table %DATABASE%.history drop constraint pk_history;
+
 alter table %DATABASE%.customer drop constraint pk_customer;
 drop index ndx_customer_name;
 
