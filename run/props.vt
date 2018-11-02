@@ -3,7 +3,8 @@ conn=jdbc:vitess://10.19.140.200:32047
 database=vt_test_keyspace
 keyspace=test_keyspace
 
-commitCount=1000
+queryTimeoutSec=600
+commitCount=10000
 
 warehouses=1
 terminals=1
