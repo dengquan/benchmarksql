@@ -10,7 +10,6 @@ import org.apache.log4j.*;
 
 import java.io.*;
 import java.sql.*;
-import java.sql.Date;
 import java.util.*;
 import javax.swing.*;
 
@@ -1240,7 +1239,7 @@ public class jTPCCTerminal implements jTPCCConfig, Runnable
         String c_first, c_middle, c_street_1, c_street_2, c_city, c_state, c_zip;
         String c_phone, c_credit = null, c_data = null, c_new_data, h_data;
         float c_credit_lim, c_discount, c_balance = 0;
-        java.sql.Date c_since;
+        java.sql.Timestamp c_since;
 
         Warehouse whse = new Warehouse();
         Customer  cust = new Customer();
@@ -1377,7 +1376,7 @@ public class jTPCCTerminal implements jTPCCConfig, Runnable
                 c_credit_lim = rs.getFloat("c_credit_lim");
                 c_discount = rs.getFloat("c_discount");
                 c_balance = rs.getFloat("c_balance");
-                c_since = rs.getDate("c_since");
+                c_since = rs.getTimestamp("c_since");
                 rs.close();
                 rs = null;
             } else {
@@ -1411,7 +1410,7 @@ public class jTPCCTerminal implements jTPCCConfig, Runnable
                 c_credit_lim = rs.getFloat("c_credit_lim");
                 c_discount = rs.getFloat("c_discount");
                 c_balance = rs.getFloat("c_balance");
-                c_since = rs.getDate("c_since");
+                c_since = rs.getTimestamp("c_since");
                 rs.close();
                 rs = null;
             }
