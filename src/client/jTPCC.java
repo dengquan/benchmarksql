@@ -76,6 +76,7 @@ public class jTPCC implements jTPCCConfig
         String  iConn               = getProp(ini,"conn");
         String  iUser               = getProp(ini,"user");
         String  iPassword           = ini.getProperty("password");
+        String  keyspace            = ini.getProperty("keyspace","benchmarksql")
 
 
         log.info("Term-00, ");
@@ -284,7 +285,7 @@ public class jTPCC implements jTPCCConfig
                         conn.setAutoCommit(false);
 
                         jTPCCTerminal terminal = new jTPCCTerminal
-                        (terminalName, terminalWarehouseID, terminalDistrictID, conn,
+                        (terminalName, terminalWarehouseID, terminalDistrictID, conn, keyspace,
                          transactionsPerTerminal, paymentWeightValue, orderStatusWeightValue,
                          deliveryWeightValue, stockLevelWeightValue, numWarehouses, limPerMin_Terminal, this);
 
