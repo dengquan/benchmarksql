@@ -5,7 +5,7 @@ alter table %DATABASE%.warehouse add constraint pk_warehouse
 alter table %DATABASE%.district add constraint pk_district
   primary key (d_w_id, d_id);
 
-alter table %DATABASE%.history add constraint pk_customer
+alter table %DATABASE%.history add constraint pk_history
     primary key (hist_id);
 
 alter table %DATABASE%.customer add constraint pk_customer
