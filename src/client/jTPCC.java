@@ -76,7 +76,7 @@ public class jTPCC implements jTPCCConfig
         String  iConn               = getProp(ini,"conn");
         String  iUser               = getProp(ini,"user");
         String  iPassword           = ini.getProperty("password");
-        String  keyspace            = ini.getProperty("keyspace","benchmarksql")
+        String  keyspace            = ini.getProperty("keyspace","benchmarksql");
 
 
         log.info("Term-00, ");
