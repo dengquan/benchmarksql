@@ -26,6 +26,8 @@ public class ExecJDBC {
 
     Properties ini = new Properties();
     ini.load( new FileInputStream(System.getProperty("prop")));
+    String database = ini.getProperty("database","benchmarksql"));
+    System.out.println("database=" + database);
 
     // Register jdbcDriver
     Class.forName(ini.getProperty( "driver" ));
@@ -61,7 +63,7 @@ public class ExecJDBC {
 		   sql.append(line.replaceAll("\\\\;", ";"));
 		   if (line.endsWith(";")) {
 		      String query = sql.toString();
-
+              query.replaceAll("%DATABASE%", database);
 		      execJDBC(stmt, query.substring(0, query.length() - 1));
 		      sql = new StringBuffer();
 		   } else {

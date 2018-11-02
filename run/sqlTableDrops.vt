@@ -1,0 +1,18 @@
+
+drop table %DATABASE%.warehouse;
+
+drop table %DATABASE%.item;
+
+drop table %DATABASE%.stock;
+
+drop table %DATABASE%.district;
+
+drop table %DATABASE%.customer;
+
+drop table %DATABASE%.oorder;
+
+drop table %DATABASE%.order_line;
+
+drop table %DATABASE%.history;
+
+drop table %DATABASE%.new_order;

@@ -1,0 +1,18 @@
+
+truncate table %DATABASE%.warehouse;
+
+truncate table %DATABASE%.item;
+
+truncate table %DATABASE%.stock;
+
+truncate table %DATABASE%.district;
+
+truncate table %DATABASE%.customer;
+
+truncate table %DATABASE%.history;
+
+truncate table %DATABASE%.oorder;
+
+truncate table %DATABASE%.order_line;
+
+truncate table %DATABASE%.new_order;
