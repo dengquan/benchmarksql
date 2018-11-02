@@ -26,7 +26,7 @@ public class ExecJDBC {
 
     Properties ini = new Properties();
     ini.load( new FileInputStream(System.getProperty("prop")));
-    String database = ini.getProperty("database","benchmarksql"));
+    String database = ini.getProperty("database","benchmarksql");
     System.out.println("database=" + database);
 
     // Register jdbcDriver

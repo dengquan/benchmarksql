@@ -173,7 +173,7 @@ static void initJDBC() {
     System.out.println("conn=" + ini.getProperty("conn"));
     System.out.println("user=" + ini.getProperty("user"));
     System.out.println("password=******");
-    String database = ini.getProperty("database","benchmarksql"));
+    String database = ini.getProperty("database","benchmarksql");
     System.out.println("database=" + database);
 
     // Register jdbcDriver
