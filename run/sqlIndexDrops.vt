@@ -1,23 +1,23 @@
 
-alter table %DATABASE%.warehouse drop constraint pk_warehouse;
+alter table %DATABASE%.warehouse drop primary key;
 
-alter table %DATABASE%.district drop constraint pk_district;
+alter table %DATABASE%.district drop primary key;
 
-alter table %DATABASE%.history drop constraint pk_history;
+alter table %DATABASE%.history drop primary key;
 
-alter table %DATABASE%.customer drop constraint pk_customer;
-drop index ndx_customer_name;
+alter table %DATABASE%.customer drop primary key;
+drop index ndx_customer_name on %DATABASE%.customer;
 
 -- history table has no primary key
 -- commit;
 
-alter table %DATABASE%.oorder drop constraint pk_oorder;
+alter table %DATABASE%.oorder drop primary key;
 drop index ndx_oorder_carrier;
 
-alter table %DATABASE%.new_order drop constraint pk_new_order;
+alter table %DATABASE%.new_order drop primary key;
 
-alter table %DATABASE%.order_line drop constraint pk_order_line;
+alter table %DATABASE%.order_line drop primary key;
 
-alter table %DATABASE%.stock drop constraint pk_stock;
+alter table %DATABASE%.stock drop primary key;
 
-alter table %DATABASE%.item drop constraint pk_item;
+alter table %DATABASE%.item drop primary key;
