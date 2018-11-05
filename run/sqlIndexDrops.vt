@@ -12,7 +12,7 @@ drop index ndx_customer_name on %DATABASE%.customer;
 -- commit;
 
 alter table %DATABASE%.oorder drop primary key;
-drop index ndx_oorder_carrier;
+drop index ndx_oorder_carrier on %DATABASE%.oorder;
 
 alter table %DATABASE%.new_order drop primary key;
 
