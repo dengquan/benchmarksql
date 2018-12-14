@@ -1,9 +1,9 @@
 driver=io.vitess.jdbc.VitessDriver
-conn=jdbc:vitess://10.19.140.200:32047
+conn=jdbc:vitess://10.19.140.200:32047?grpcRetriesEnabled=true&grpcRetriesMaxBackoffMillis=120000&timeout=600000&executeType=simple
 database=vt_test_keyspace
 keyspace=test_keyspace
 
-queryTimeoutSec=600
+//queryTimeoutSec=600
 commitCount=10000
 
 warehouses=1
